@@ -10,6 +10,6 @@
 
 <p>You are currently not signed in <a href="login.php">Login</a> Not yet a member? <a href="signup.php">Sign up</a></p>
 
-<p>You are loggin in as {username} <a href="login.php">Logout</a></p>
+<p>You are loggin in as {username} <a href="signup.php">Logout</a></p>
 </body>
 </html>
