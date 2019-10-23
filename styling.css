@@ -13,4 +13,6 @@ body{
 
   .login{
       padding-top: 80px;
+      display: block;
+      text-align: center;
   }
