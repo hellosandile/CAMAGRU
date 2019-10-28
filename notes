@@ -1,0 +1,3 @@
+Database wrappers allow software applications that acces database management systems
+to do so indirectly instead of encoding specific database access functions within
+the applications'control functionalilty. 
