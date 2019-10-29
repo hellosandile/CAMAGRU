@@ -1,4 +1,40 @@
 
+.camera {
+    position: absolute;
+    width:400px;
+    background-color: #ccc;
+    border:10px solid #ddd;
+    margin:0 auto;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    display: inline-block;
+}
+.ccb {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.canvas {
+    display: none;
+}
+
+.photo {
+    position: absolute;
+    z-index: 10;
+    width: 120px;
+    height: 120px;
+    top: 0;
+    left: 0;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
