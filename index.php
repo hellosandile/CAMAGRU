@@ -1,4 +1,13 @@
-<?php
-require_once 'config/setup.php';
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home page</title>
+</head>
+<body>
 
-echo "dasdas";
+    <?PHP include_once 'config/setup.php' ?>
+
+<p>dasdasd</p>
+</body>
+
+</html>

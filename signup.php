@@ -54,8 +54,3 @@
 </form>
 </body>
 </html>
-
-<?PHP
-
-echo "rerere";
-?>
