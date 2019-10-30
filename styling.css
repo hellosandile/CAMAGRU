@@ -5,6 +5,7 @@
     background-color: #ccc;
     border:10px solid #ddd;
     margin:0 auto;
+    position: sticky;
 }
 ul{
     list-style-type: none;

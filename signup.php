@@ -1,54 +1,61 @@
-<?PHP
-include_once 'resource/db.php';
 
-if(isset($_POST['email'])){
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+<?php
+    session_start();
+    require('config/database.php');
 
-    try{
-        $sqlInsert = "INSERT INTO users (username, email, `password`, join_date)
-                    VALUES (:username, :email, :`password`, :now()";
+    try {
+        //print_r($_POST);
+        if (!empty($_POST['username']) || !empty($_POST['email']) || !empty($_POST['pwd']))
+{
 
-    $statement = $db->prepare($sqlInsert);
-    $statement->execute(array(':username' => $username, ':email' => $email, ':password' => $password));
-    
-    if($statement->rowCount() == 1){
-        $result = "<p>Registration successful</p>";
-    }
+    $username       = trim(htmlspecialchars($_POST['username']));
+    $email          = trim(htmlspecialchars($_POST['email']));
+    $pwd            = trim(htmlspecialchars($_POST['pwd']));
 
-    }catch (PDOException $ex){
-        $result = "<p>An error has occured: ".$ex->getMessage()."</p>";
-    }
+            $con = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            
+                $hashpass = password_hash($pwd, PASSWORD_BCRYPT);
+				$con = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
+				$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+				$sql = "USE ".$DB_NAME;
+                $sql = "INSERT INTO users ( Username, email, Passwrd)
+                VALUES (:username, :email, :pwd)";
+                $stmt = $con->prepare($sql);
+
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':pwd', $hashpass);
+                $stmt->execute();
 }
-
+    }
+        catch(PDOException $e)
+        {
+            echo $stmt . "<br>" . $e->getMessage();
+        }
+        $conn = null;
 ?>
+
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Login</title>
+<head>
+    <meta charset = "UTF-8">
+    <title>Signup Page</title>
 </head>
 <body>
-<h2>User Authentication System </h2><hr>
-</html>
-
-<h3>Registration form</h3>
-
-<?PHP 
-var_dump($_POST);
-
-if(isset($result)) echo $result; ?>
-
-<form method="post" action="">
+<h1>Sign Up</h1>
+<form method = "post" action = "signup.php">
     <table>
-        <tr><td>email:</td> <td><input type="text" value="" name="email"></td></tr>
-        <tr><td>Username:</td> <td><input type="text" value="" name="username"></td></tr>
-        <tr><td>Password:</td> <td><input type="password" value="" name="password"></td></tr>
-        <tr><td></td> <td><input style="float: right" type="submit" value="Sign up"></td></tr>
+        <tr><td>Email:</td> <td><input type = "text" value = "" name = "email"></td></tr>
+        <tr><td>Username:</td> <td><input type = "text" value = "" name = "username"></td></tr>
+        <tr><td>Password:</td> <td><input type = "password" value = "" name = "password"></td></tr>
+        <tr><td></td><td><input style = "float: right;" type = "submit" value = "Sign Up" ></td></tr>
     </table>
-
 </form>
-<p><a href="index.php">Back</a> </p>
 </body>
 </html>
+
+<?PHP
+
+echo "rerere";
+?>

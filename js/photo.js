@@ -26,11 +26,34 @@
             console.log(canvas.toDataURL('image/png')); //my image URL
     });
 
-    var thumb2 = document.getElementById('thumb2');
-    thumb2.addEventListener("click", (event)=>{
+    var thumb = document.getElementById('thumb1');
+    thumb.addEventListener("click", (event)=>{
+        photo.setAttribute("src", 'img/albion.png');
+    });
+
+    var thumb = document.getElementById('thumb2');
+    thumb.addEventListener("click", (event)=>{
+        photo.setAttribute("src", 'img/chelsea.png');
+    });
+
+    var thumb = document.getElementById('thumb3');
+    thumb.addEventListener("click", (event)=>{
+        photo.setAttribute("src", 'img/crystalpalace.png');
+    });
+
+    var thumb = document.getElementById('thumb4');
+    thumb.addEventListener("click", (event)=>{
+        photo.setAttribute("src", 'img/liverpool.png');
+    });
+
+    var thumb = document.getElementById('thumb5');
+    thumb.addEventListener("click", (event)=>{
         photo.setAttribute("src", 'img/manu.png');
     });
 
-})();
+    var thumb = document.getElementById('thumb6');
+    thumb.addEventListener("click", (event)=>{
+    photo.setAttribute("src", 'img/sunderland.png');
+    });
 
-//get the el
+})();

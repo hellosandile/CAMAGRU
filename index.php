@@ -1,6 +1,4 @@
 <?php
-require_once 'core/init.php';
+require_once 'config/setup.php';
 
-DB::getInstance();
-
-echo "rdasdase";
+echo "dasdas";
