@@ -1,3 +1,12 @@
 Database wrappers allow software applications that acces database management systems
 to do so indirectly instead of encoding specific database access functions within
 the applications'control functionalilty. 
+
+
+Verification email
+
+reset password and edit profile
+
+Upload photos into database (save into img)
+
+like and comment and delete system

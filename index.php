@@ -7,7 +7,6 @@
 
     <?PHP include_once 'config/setup.php' ?>
 
-<p>dasdasd</p>
 </body>
 
 </html>
