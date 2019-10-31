@@ -30,7 +30,9 @@ try {
     `user_id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `Username` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255),
-    `Passwrd` VARCHAR(255) NOT NULL
+    `Passwrd` VARCHAR(255) NOT NULL,
+    `Verified` INT(1) NOT NULL DEFAULT 0,
+    `VeriCode` VARCHAR(10000) NOT NULL
     )";
 
     $conn->exec($sql);
@@ -41,6 +43,6 @@ catch(PDOException $e)
     echo $sql . "<br>" . $e->getMessage();
     }
 
-$conn = null;
+//$conn = null;
 
 ?>

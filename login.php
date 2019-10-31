@@ -1,4 +1,10 @@
-<?php ?>
+<?php 
+
+include_once 'fucntions/sessions.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -15,7 +21,7 @@
     <table>
         <tr><td>Username:</td> <td><input type="text" value=""></td></tr>
         <tr><td>Password:</td> <td><input type="password" value=""></td></tr>
-        <tr><td></td> <td><input style="float: right" type="submit" value="Sign in"></td></tr>
+        <tr><td></td> <td><input style="float: right" type="submit" name = "login" value="Sign in"></td></tr>
     </table>
 
 </form>
