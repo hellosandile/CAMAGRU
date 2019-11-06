@@ -21,10 +21,20 @@
     });
 
     document.getElementById('capture').addEventListener('click', function() {
-           context.drawImage(video, 0, 0, 400, 300);
-            context.drawImage(photo, 0, 0, 100, 100);
-            var image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream'); //my image URL
-            window.location.href=image;
+        context.drawImage(video, 0, 0, 400, 300);
+        //context.drawImage(photo, 0, 0, 100, 100);
+        var image = canvas.toDataURL('image/png'); //.replace('image/png', 'image/octet-stream'); //my image URL
+            //window.location.href=image;
+        var form = document.createElement("form");
+        form.action="picform.php";
+        form.method="post";
+        var inputtextbox = document.createElement("input");
+        inputtextbox.type = "hidden";
+        inputtextbox.value= image;
+        inputtextbox.name = 'base64';
+        form.appendChild(inputtextbox);
+        document.body.appendChild(form);
+        form.submit();
     });
 
     var thumb = document.getElementById('thumb1');

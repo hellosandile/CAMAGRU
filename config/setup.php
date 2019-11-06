@@ -54,8 +54,8 @@ try {
     $sql = "CREATE TABLE IF NOT EXISTS pictures_table (
     `photo_id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `image` VARCHAR(200) NOT NULL,
-    `text` TEXT(200),
-    'user_id' INT FOREIGN KEY REFERENCES users(user_id)
+    `text` TEXT(200)
+    /*'user_id' INT FOREIGN KEY REFERENCES users(user_id)*/
     )";
     
         $conn->exec($sql);
