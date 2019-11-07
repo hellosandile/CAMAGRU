@@ -33,6 +33,13 @@
         inputtextbox.value= image;
         inputtextbox.name = 'base64';
         form.appendChild(inputtextbox);
+        var sticker = photo.src;
+        sticker = sticker.replace(/^.*[\\\/]/, '');
+        var textbox = document.createElement("input");
+        textbox.type = "hidden";
+        textbox.value= sticker ;
+        textbox.name = 'sticker';
+        form.appendChild(textbox);
         document.body.appendChild(form);
         form.submit();
     });
