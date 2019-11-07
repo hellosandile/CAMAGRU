@@ -1,6 +1,6 @@
 <?php
 
-include 'config/setup.php';
+require 'config/setup.php';
 
 $email = $_POST['email'];
 $password1 = $_POST['new_password'];
