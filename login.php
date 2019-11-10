@@ -17,7 +17,7 @@
                 $verified = $row['confirm'];
                 if($verified == 1){
                     if(password_verify($password, $hashed_password)){
-                        $_SESSION['id'] = $id;
+                        $_SESSION['user_id'] = $id;
                         header("location: camagru/camera.php");
                     }else{
                         $result = "<p style='color:red;'> Incorrect password or email</p>";
