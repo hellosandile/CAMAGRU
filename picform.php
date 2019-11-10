@@ -1,4 +1,7 @@
 <?PHP
+include_once 'functions/session.php';
+include_once 'config/setup.php';
+
 $filteredData=substr($_POST['base64'], strpos($_POST['base64'], ",") + 1);
 $unencodedData = base64_decode($filteredData);
 $naming = hash('md5', rand(10, 10000), FALSE);
@@ -19,6 +22,23 @@ function super_impose($src,$dest,$topimage)
 }
 $name = $_POST['sticker'];
 super_impose("img_gallery/".$naming.".png","img_gallery/".$naming.".png","img/".$name);
+
+try {
+    $con = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
+				$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+				$sql = "USE ".$DB_NAME;
+                $sql = "INSERT INTO pictures_table ( `image`, `user_id`)
+                VALUES (:image, :text)";
+                $stmt = $con->prepare($sql);
+                $stmt->bindParam(':image', $naming);
+                $stmt->bindParam(':text', $_SESSION['user_id']);
+                $stmt->execute();
+}catch(PDOException $e)
+{
+    echo $stmt . "<br>" . $e->getMessage();
+}
+$conn = null;
+
 header("location:/camagru/camera.php");
 
 ?>

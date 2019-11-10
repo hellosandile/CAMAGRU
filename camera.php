@@ -68,3 +68,8 @@
         <script src="js/photo.js"></script>
     </body>
 </html>
+
+<?PHP
+
+include 'gallery.php';
+?>

@@ -1,7 +1,7 @@
 <?php
 
 
-session_start();
+//session_start();
 //help debugg error messages
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -42,7 +42,6 @@ try {
   }
   $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $con->prepare("SELECT * FROM pictures_table");
-    $stmt->bindParam(':pictures_table', $images);
     $stmt->execute();
     $result = $stmt->fetch();
   //$result = mysqli_query($con, "SELECT * FROM images");
@@ -65,7 +64,6 @@ catch(PDOException $e)
 
 	$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$stmt = $con->prepare("SELECT * FROM pictures_table");
-	$stmt->bindParam(':pictures_table', $images);
 	$stmt->execute();
 	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

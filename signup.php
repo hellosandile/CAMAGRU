@@ -1,6 +1,6 @@
 
 <?php
-    session_start();
+    require('functions/session.php');
     require('config/database.php');
 
     try {
@@ -31,6 +31,7 @@
                 $stmt->execute();
 
                 if($stmt->rowCount()){
+                    $_SESSION['user_id'] = 1;
                     mail($email, "Confirm email",
                     "http://localhost:8080/camagru/functions/verify.php?email=$email&vericode=$vericode", "sandile@wow.com");
                 }
@@ -58,6 +59,7 @@
         <tr><td>Password:</td> <td><input type = "password" value = "" name = "password" required></td></tr>
         <tr><td></td><td><input style = "float: right;" type = "submit" value = "Sign Up" ></td></tr>
     </table>
+    <p>Already have an account <a href="login.php">Click Here</a></p>
 </form>
 </body>
 </html>
