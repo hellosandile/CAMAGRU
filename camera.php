@@ -53,7 +53,10 @@
             display : inline-block;
             float : left;
             border-right : 1px solid #f5f7f6;' src='".$img_dir.$img."'/>
-            
+            <form action = 'delete.php' method = 'post'>
+            <input type = 'hidden' name = 'delete' value = '$img'/>
+            <input type = 'submit' name = 'del' value = 'Delete'/>
+            </form>
             </div>
             </li>";
           } 

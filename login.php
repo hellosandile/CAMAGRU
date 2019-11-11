@@ -3,29 +3,31 @@
     include_once 'config/setup.php';
     if(isset($_POST['login'])){
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $pasword = trim(htmlspecialchars($_POST['password']));
+        $password = hash('md5',$pasword, FALSE);
         try{
-            $query = "SELECT * FROM users WHERE username = :username";
+            $query = "SELECT * FROM users WHERE Username = :username";
             $statement = $conn->prepare($query);
             $statement->bindParam(':username', $username);
             $statement->execute();
             if($statement->rowCount() == 1){
                 $row = $statement->fetch();
-                $username = $row['username'];
+                $username = $row['Username'];
                 $id = $row['user_id'];
                 $hashed_password = $row['Passwrd'];
-                $verified = $row['confirm'];
+                $verified = $row['Verified'];
                 if($verified == 1){
-                    if(password_verify($password, $hashed_password)){
+                    if($password == $hashed_password){
                         $_SESSION['user_id'] = $id;
-                        header("location: camagru/camera.php");
+                        echo "please";
+                        header("location: camera.php");
                     }else{
-                        $result = "<p style='color:red;'> Incorrect password or email</p>";
+                        $result = "$password.<br />$hashed_password";
                     }
                 }
             }
         }catch(PDOException $ex){
-            $result = "<p style='color:red;'> An error occured".$ex->getMessage()."</p>";
+            $result = "<p>An error occured".$ex->getMessage()."</p>";
         }
     }
 ?>
@@ -36,10 +38,6 @@
         <div>
             <nav>
                 <a >Camagru</a>
-                <div>
-                    <a  href="#">Login</a>
-                    <a href="signup.php">Signup</a>
-                </div>
             </nav>
         </div>
         <div>

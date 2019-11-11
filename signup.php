@@ -5,18 +5,18 @@
 
     try {
         //print_r($_POST);
-        if (!empty($_POST['username']) || !empty($_POST['email']) || !empty($_POST['pwd']))
+        if (!empty($_POST['username']) || !empty($_POST['email']) || !empty($_POST['password']))
 {
 
     $username       = trim(htmlspecialchars($_POST['username']));
     $email          = trim(htmlspecialchars($_POST['email']));
-    $pwd            = trim(htmlspecialchars($_POST['pwd']));
+    $pwd            = trim(htmlspecialchars($_POST['password']));
 
             $con = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             
                 $vericode = password_hash(rand(1, 9999999999), PASSWORD_BCRYPT);
-                $hashpass = password_hash($pwd, PASSWORD_BCRYPT);
+                $hashpass = hash('md5',$pwd, FALSE);
 				$con = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
 				$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 				$sql = "USE ".$DB_NAME;
@@ -31,7 +31,6 @@
                 $stmt->execute();
 
                 if($stmt->rowCount()){
-                    $_SESSION['user_id'] = 1;
                     mail($email, "Confirm email",
                     "http://localhost:8080/camagru/functions/verify.php?email=$email&vericode=$vericode", "sandile@wow.com");
                 }
