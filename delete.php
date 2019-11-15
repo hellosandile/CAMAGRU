@@ -9,11 +9,14 @@ if(isset($_POST['delete'])){
         unlink($path);
         $imagename = $_POST['delete'];
         $userid = $_SESSION['user_id'];
+        $img_id = $_POST['img_id'];
         try{
-            $query = "DELETE FROM pictures_table WHERE image = :imagename";
+          
+            $query = "DELETE FROM pictures_table WHERE photo_id = :imagename";
             $statement = $conn->prepare($query);
-            $statement->bindParam(':imagename', $imagename);
+            $statement->bindParam(':imagename', $img_id);
             $statement->execute();
+            header("location:/camagru/camera.php");
             if ($statement->rowCount())
             {
                 echo 'deleted';
@@ -22,9 +25,8 @@ if(isset($_POST['delete'])){
             {
                 echo "error". $userid. "^^^^^".$imagename;
             }
-        //    header("location: camera.php");
-        }catch(PDOException $ex){
-            $result = "<p>An error occured".$ex->getMessage()."</p>";
+        }catch(PDOException $e){
+            $result = "<p>An error occured".$e->getMessage()."</p>";
         }
     }
 }

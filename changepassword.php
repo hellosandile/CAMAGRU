@@ -53,5 +53,8 @@ if($password1 != $password2){
         <tr><td></td><td><input style = "float: right;" type = "submit" value = "Reset Password" ></td></tr>
     </table>
 </form>
+<div class="footer">
+  <p><a href="logout.php">LOGOUT</a></p>
+</div>
 </body>
 </html>

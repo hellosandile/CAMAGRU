@@ -19,10 +19,9 @@
                 if($verified == 1){
                     if($password == $hashed_password){
                         $_SESSION['user_id'] = $id;
-                        echo "please";
                         header("location: camera.php");
                     }else{
-                        $result = "$password.<br />$hashed_password";
+                        //$result = "$password.<br />$hashed_password";
                     }
                 }
             }
@@ -33,13 +32,9 @@
 ?>
 <html>
     <head>
+    <link rel="stylesheet" href="styling.css"/>
     </head>
     <body>
-        <div>
-            <nav>
-                <a >Camagru</a>
-            </nav>
-        </div>
         <div>
             <div class="row">
                 <div>
@@ -59,6 +54,9 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            <p><a href="logout.php"></a></p>
         </div>
     </body>
 </html>

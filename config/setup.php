@@ -10,7 +10,7 @@ try {
     $sql = "CREATE DATABASE IF NOT EXISTS camagru";
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "Database created successfully<br>";
+    //echo "Database created successfully<br>";
     }
 catch(PDOException $e)
     {
@@ -37,7 +37,7 @@ try {
     )";
 
     $conn->exec($sql);
-    echo "Table users created successfully<br>";
+    //echo "Table users created successfully<br>";
     }
 catch(PDOException $e)
     {
@@ -54,7 +54,7 @@ try{
     `photo_id` INT(11) NOT NULL, 
     `comment` VARCHAR(200) NOT NULL)";
     $conn->exec($sql);
-    echo "comments table created<br>";
+    //echo "comments table created<br>";
     }
     catch(PDOException $ex) {
         echo $sql . "<br>" . $e->getMessage();
@@ -76,7 +76,7 @@ try {
     )";
     
         $conn->exec($sql);
-        echo "Table pictures_table created successfully<br>";
+      //  echo "Table pictures_table created successfully<br>";
         }
     catch(PDOException $e)
         {

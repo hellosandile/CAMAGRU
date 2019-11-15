@@ -5,7 +5,7 @@
 
     try {
         //print_r($_POST);
-        if (!empty($_POST['username']) || !empty($_POST['email']) || !empty($_POST['password']))
+        if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']))
 {
 
     $username       = trim(htmlspecialchars($_POST['username']));
@@ -32,7 +32,7 @@
 
                 if($stmt->rowCount()){
                     mail($email, "Confirm email",
-                    "http://localhost:8080/camagru/functions/verify.php?email=$email&vericode=$vericode", "sandile@wow.com");
+                    "http://localhost:8080/camagru/functions/verify.php?email=$email&vericode=$vericode", "Please click on link to verify your account then close window and login");
                 }
 }
     }
@@ -60,5 +60,8 @@
     </table>
     <p>Already have an account <a href="login.php">Click Here</a></p>
 </form>
+<div class="footer">
+  <p><a href="logout.php"></a></p>
+</div>
 </body>
 </html>

@@ -5,6 +5,8 @@ include_once 'config/setup.php';
 $filteredData=substr($_POST['base64'], strpos($_POST['base64'], ",") + 1);
 $unencodedData = base64_decode($filteredData);
 $naming = $_SESSION['user_id'].time();
+if (!file_exists('img_gallery'))
+    mkdir(img_gallery);
 file_put_contents('img_gallery/'.$naming.'.png', $unencodedData);
 
 function super_impose($src,$dest,$topimage)
@@ -35,7 +37,7 @@ try {
                 $stmt->execute();
 }catch(PDOException $e)
 {
-    echo $stmt . "<br>" . $e->getMessage();
+    echo  "<br>" . $e->getMessage();
 }
 $conn = null;
 

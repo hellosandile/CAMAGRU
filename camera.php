@@ -24,18 +24,28 @@
             
         
         </div>
+        <h1>Click here to see your <a href='gallery.php'>gallery</a></h1>
         <?php
+        include_once 'config/setup.php';
         $img_dir = "img_gallery/";
         $images = scandir($img_dir);
         $html = "";
+        try {
+          $con = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
+              $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+              $sql = "USE ".$DB_NAME;
+                      $sql = "SELECT * FROM pictures_table";
+                      $stmt = $con->prepare($sql);
+                      $stmt->execute();
+                      $res = $stmt->fetch();
         $html = "<ul id = 'taken-pics'>";
         foreach($images as $img) 	
         { 
-          if($img === '.' || $img === '..') 
+          if($img=== '.' || $img === '..') 
           {
             continue;
           } 		   
-          if (preg_match('/.png/',$img))
+          if (preg_match('/.png/',$img) )
           {				
             $html .="<li>
             <div style = '  width : 100%;
@@ -55,10 +65,12 @@
             border-right : 1px solid #f5f7f6;' src='".$img_dir.$img."'/>
             <form action = 'delete.php' method = 'post'>
             <input type = 'hidden' name = 'delete' value = '$img'/>
+            <input type = 'hidden' name = 'img_id' value = '".$res['photo_id']."'/>
             <input type = 'submit' name = 'del' value = 'Delete'/>
             </form>
             </div>
             </li>";
+          
           } 
           else 
           { 
@@ -67,12 +79,18 @@
         } 
         $html .="</ul>" ; 
         echo $html;
+      }catch(PDOException $e)
+      {
+          echo $stmt . "<br>" . $e->getMessage();
+      }
       ?>
         <script src="js/photo.js"></script>
+        <div class="footer">
+          <p><a href="logout.php">LOGOUT</a></p>
+        </div>
+
     </body>
 </html>
 
 <?PHP
-
-include 'gallery.php';
 ?>
