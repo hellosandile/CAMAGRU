@@ -1,3 +1,7 @@
+<?php
+  require_once 'functions/session.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
