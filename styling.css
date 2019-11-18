@@ -7,11 +7,11 @@
     margin:0 auto;
     position: sticky;
 }
-ul{
+.camera ul{
     list-style-type: none;
 }
-li{
-    display: inline-block;
+.camera li{
+    display: center;
 }
 .ccb {
     display: block;
@@ -37,16 +37,8 @@ li{
 }
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif; 
 }
-
-.header {
-    padding: 10px;
-    text-align: left;
-    background: rebeccapurple;
-    color: white;
-    font-size: 30%;
-  }
 
   .login{
       padding-top: 80px;
