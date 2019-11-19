@@ -1,3 +1,13 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="styling.css"/>
+</head>
+<body>
+  <header>
+<?php include 'includes/header.php' ?>
+</header>
+<div>
 <?php
 require 'config/database.php';
 ob_start();
@@ -7,14 +17,9 @@ ob_end_clean();
 echo $html;
 
 ?>
-<html>
-<head>
-	<meta charset="UTF-8">
-    <link rel="stylesheet" href="styling.css"/>
-</head>
-<body>
+</div>
 <div class="footer">
-  <p><a href="logout.php">LOGOUT</a></p>
+<?php include 'includes/footer.php' ?>
 </div>
 </body>
 

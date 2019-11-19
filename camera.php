@@ -1,5 +1,8 @@
 <?php
-  require_once 'functions/session.php';
+  include 'functions/session.php';
+  if(!isset($_SESSION['user_id'])){
+    header("location: login.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +12,7 @@
         <link rel="stylesheet" href="styling.css"/>
     </head>
     <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header.php' ?>
         <div class="camera">
             <div>
             <video id="video" width="400" height="300"></video>
@@ -30,7 +33,8 @@
         
         </div>
         <h1>Click here to see your <a href='gallery.php'>gallery</a></h1>
-        <?php
+        <?php 
+        //print_r($_SESSION['user_id']);
         include_once 'config/setup.php';
         $img_dir = "img_gallery/";
         $images = scandir($img_dir);
@@ -91,7 +95,7 @@
       ?>
         <script src="js/photo.js"></script>
         <div class="footer">
-          <p><a href="logout.php">LOGOUT</a></p>
+        <?php include 'includes/footer.php' ?>
         </div>
 
     </body>

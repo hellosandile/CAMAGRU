@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="styling.css"/>
     </head>
     <body>
+    <?php include 'includes/header.php' ?>
         <div>
             <div class="row">
                 <div>
@@ -48,15 +49,16 @@
                         <div>
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                            <input type="submit" value="Log In" name="login">
                         </div>
-                        <input type="submit" value="Log In" name="login">
-                        <p>Forgot Password <a href="changepassword.php">Click Here</a></p>
+                        <p>Forgot Password? <a href="changepassword.php">Click Here</a></p>
+                        <p>If you don't have an account <a href="signup.php">Click Here</a></p>
                     </form>
                 </div>
             </div>
         </div>
         <div class="footer">
-            <p><a href="logout.php"></a></p>
+        <?php include 'includes/footer.php' ?>
         </div>
     </body>
 </html>

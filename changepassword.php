@@ -41,9 +41,11 @@ if($password1 != $password2){
 <html>
 <head lang="en">
     <meta charset = "UTF-8">
+    <link rel="stylesheet" href="styling.css"/>
     <title>Password Reset</title>
 </head>
 <body>
+<?php include 'includes/header.php'?>
 <h1>Password Reset</h1>
 <form method = "post" action = "changepassword.php">
     <table>
@@ -54,7 +56,7 @@ if($password1 != $password2){
     </table>
 </form>
 <div class="footer">
-  <p><a href="logout.php">LOGOUT</a></p>
+<?php include 'includes/footer.php' ?>
 </div>
 </body>
 </html>
