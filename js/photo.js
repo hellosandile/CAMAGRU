@@ -43,7 +43,19 @@
         document.body.appendChild(form);
         form.submit();
     });
-
+    var putfile = document.querySelector('#upfile');
+    var uploadfile = document.querySelector('#choosefile');
+    
+    uploadfile.addEventListener('change', (event)=>
+    {
+        var reader = new FileReader;
+        reader.addEventListener('load', (event)=>
+        {
+        putfile.src = reader.result;
+        });
+        reader.readAsDataURL(uploadfile.files[0]);
+    });
+    
     var thumb = document.getElementById('thumb1');
     thumb.addEventListener("click", (event)=>{
         photo.setAttribute("src", 'img/albion.png');
@@ -75,3 +87,4 @@
     });
 
 })();
+

@@ -17,6 +17,7 @@
             <div>
             <video id="video" width="400" height="300"></video>
             <img id="photo" class="photo" src="" alt="Photo"/>
+            <img id="upfile" width="400" height="300"/>
             <ul><li><img id = "thumb1" src="img/albion.png" width="50" height="50"/>
             </li><li><img id = "thumb2" src="img/chelsea.png" width="50" height="50"/>
             </li><li><img id = "thumb3" src="img/crystalpalace.png" width="50" height="50"/>
@@ -28,6 +29,10 @@
 
             </div>
             <a href="#" id="capture" class="ccb">Take Photo</a>
+            <div>
+              <input id="choosefile" type="file" accept="image/*"/>
+              <button type="button">upload</button> 
+            </div>
             <canvas id="canvas" style="display: none"width="400" height="300"></canvas>
             
         
@@ -94,6 +99,7 @@
       }
       ?>
         <script src="js/photo.js"></script>
+    
         <div class="footer">
         <?php include 'includes/footer.php' ?>
         </div>
