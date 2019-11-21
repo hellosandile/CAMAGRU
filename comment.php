@@ -19,7 +19,7 @@ if(isset($_POST['comment'])){
                 $stmt->bindParam(':photo_id', $img_id);
                 $stmt->bindParam(':comment', $comment);
                 $stmt->execute();
-            //header("location:/camagru/gallery.php");
+            header("location:/camagru/gallery.php");
             if ($stmt->rowCount())
             {
                 echo "comment added";

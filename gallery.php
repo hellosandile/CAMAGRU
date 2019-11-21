@@ -31,7 +31,7 @@
         while( $res = $stmt->fetch()) 	
         { 
           $sql = "USE ".$DB_NAME;
-                      $sql = "SELECT * FROM comments WHERE photo_id = ".$res['photo_id'];
+                      $sql = "SELECT * FROM `comments` WHERE `user_id`= 8";
                       $st= $con->prepare($sql);
                       $st->execute();
 
@@ -71,16 +71,22 @@
             <input type = 'hidden' name = 'img_id' value = '".$res['photo_id']."'/>
             <input type = 'submit' name = 'comment' value = 'comment'/>
         </form>
-            <input type = 'button' name = 'like' value = 'like'/>
+        <form action = 'like.php' method = 'post'>
+            <input type = 'hidden' name = 'img_id' value = '".$res['photo_id']."'/>
+            <input type = 'submit' name = 'like' value = 'like'/>
+            </form>
+
+
+         "
+            while($out = $st->fetchAll())
+            {
+              var_dump($out);
+              echo $out['comment'];
+            }
+          "  
+          </div>
             </div>
             <div>
-            <?php
-              while($out = $st->fetch())
-              {
-                echo".$out['comment'];"
-              }
-            ?>
-            </div>
             </li>";
           
           } 
