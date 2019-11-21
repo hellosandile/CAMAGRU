@@ -30,6 +30,11 @@
         //echo $res['image'];
         while( $res = $stmt->fetch()) 	
         { 
+          $sql = "USE ".$DB_NAME;
+                      $sql = "SELECT * FROM comments WHERE photo_id = ".$res['photo_id'];
+                      $st= $con->prepare($sql);
+                      $st->execute();
+
           $img  = $res['image'];
           if($img=== '.' || $img === '..') 
           {
@@ -48,9 +53,8 @@
             display : inline-block;
             float : left;
             border-right : 1px solid #f5f7f6;' src='".$img_dir.$img."'/>
-            <form action = 'delete.php' method = 'post'>
-            <input type = 'hidden' name = 'delete' value = '$img'/>
-            <input type = 'hidden' name = 'img_id' value = '".$res['photo_id']."'/>
+            
+            <form action = 'comment.php' method = 'post'>
             <textarea 
       	id='text' 
       	cols='40' 
@@ -63,9 +67,19 @@
         display : inline-block;
         border-right : 1px solid darkgrey;'></div>
         <br/>
-            <input type = 'button' name = 'comment' value = 'comment'/>
+        
+            <input type = 'hidden' name = 'img_id' value = '".$res['photo_id']."'/>
+            <input type = 'submit' name = 'comment' value = 'comment'/>
+        </form>
             <input type = 'button' name = 'like' value = 'like'/>
-            </form>
+            </div>
+            <div>
+            <?php
+              while($out = $st->fetch())
+              {
+                echo".$out['comment'];"
+              }
+            ?>
             </div>
             </li>";
           
