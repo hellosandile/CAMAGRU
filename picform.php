@@ -4,10 +4,10 @@ include_once 'config/setup.php';
 
 $filteredData=substr($_POST['base64'], strpos($_POST['base64'], ",") + 1);
 $unencodedData = base64_decode($filteredData);
-$naming = $_SESSION['user_id'].time();
+$naming = $_SESSION['user_id'].time().'.png';
 if (!file_exists('img_gallery'))
     mkdir(img_gallery);
-file_put_contents('img_gallery/'.$naming.'.png', $unencodedData);
+file_put_contents('img_gallery/'.$naming, $unencodedData);
 
 function super_impose($src,$dest,$topimage)
 {
@@ -23,7 +23,7 @@ function super_impose($src,$dest,$topimage)
     imagejpeg($cameraimage , $dest);
 }
 $name = $_POST['sticker'];
-super_impose("img_gallery/".$naming.".png","img_gallery/".$naming.".png","img/".$name);
+super_impose("img_gallery/".$naming,"img_gallery/".$naming,"img/".$name);
 
 try {
     $con = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);

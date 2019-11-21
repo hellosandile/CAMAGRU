@@ -43,8 +43,9 @@
         document.body.appendChild(form);
         form.submit();
     });
-    var putfile = document.querySelector('#upfile');
-    var uploadfile = document.querySelector('#choosefile');
+    var putfile = document.getElementById('upfile');
+    var uploadfile = document.getElementById('choosefile');
+    var bupload = document.getElementById('bupload');
     
     uploadfile.addEventListener('change', (event)=>
     {
@@ -54,6 +55,30 @@
         putfile.src = reader.result;
         });
         reader.readAsDataURL(uploadfile.files[0]);
+    });
+
+    bupload.addEventListener('click', (event)=>{
+        context.drawImage(putfile, 0, 0, 400, 300);
+        //context.drawImage(photo, 0, 0, 100, 100);
+        var image = canvas.toDataURL('image/png'); //.replace('image/png', 'image/octet-stream'); //my image URL
+            //window.location.href=image;
+        var form = document.createElement("form");
+        form.action="picform.php";
+        form.method="post";
+        var inputtextbox = document.createElement("input");
+        inputtextbox.type = "hidden";
+        inputtextbox.value= image;
+        inputtextbox.name = 'base64';
+        form.appendChild(inputtextbox);
+        var sticker = photo.src;
+        sticker = sticker.replace(/^.*[\\\/]/, '');
+        var textbox = document.createElement("input");
+        textbox.type = "hidden";
+        textbox.value= sticker ;
+        textbox.name = 'sticker';
+        form.appendChild(textbox);
+        document.body.appendChild(form);
+        form.submit();
     });
     
     var thumb = document.getElementById('thumb1');

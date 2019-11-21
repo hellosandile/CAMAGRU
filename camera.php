@@ -31,7 +31,7 @@
             <a href="#" id="capture" class="ccb">Take Photo</a>
             <div>
               <input id="choosefile" type="file" accept="image/*"/>
-              <button type="button">upload</button> 
+              <button id="bupload" type="button">upload</button> 
             </div>
             <canvas id="canvas" style="display: none"width="400" height="300"></canvas>
             

@@ -8,10 +8,10 @@
     margin:0 auto;
     position: sticky;
 }
-.camera ul{
+camera .ul{
     list-style-type: none;
 }
-.camera li{
+camera .li{
     display: center;
 }
 .ccb {
