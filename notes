@@ -12,3 +12,6 @@ Upload photos into database (save into img)
 like and comment and delete system
 
 Logout added to header for everypage
+
+
+imagepage - take image id, select from data and print add like and comment section then display comments from comment php

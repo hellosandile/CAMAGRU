@@ -31,7 +31,7 @@ li a:hover:not(.active) {
 <body>
 
 <ul>
-  <li><a href="signup.php">Sign In</a></li>
+  <li><a href="signup.php">Sign Up</a></li>
   <li><a href="includes/logout.php">Logout</a></li>
 </ul>
 

@@ -34,9 +34,10 @@ include_once 'config/database.php';
 
 <html>
 <head>
-
+    <link rel="stylesheet" href="styling.css"/>
 </head>
 <body>
+<?php include 'includes/header.php' ?>
 <div id="content">
 <?php
     try {
@@ -76,8 +77,9 @@ include_once 'config/database.php';
           echo "<img src='img_gallery/".$res['image']."'>";
           echo "</div>";
       }
+      echo "<br><br>";
       for($page = 1; $page <= $number_of_pages; $page++){
-        echo "<a href= 'gallery.php?page=" .$page . "'>" . $page . "</a>";
+        echo "<a href= 'gallery.php?page=" .$page . "'>" .  " " . $page . "</a>";
       }
     }catch(PDOException $e)
     {
@@ -85,5 +87,8 @@ include_once 'config/database.php';
     }
 ?>
 </div>
+    <div class="footer">
+        <?php include 'includes/footer.php' ?>
+        </div>
 </body>
 </html>
