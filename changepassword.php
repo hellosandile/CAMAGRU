@@ -1,6 +1,7 @@
 <?php
 
 require 'config/setup.php';
+include 'functions/session.php';
 
 $email = $_POST['email'];
 $password1 = $_POST['new_password'];
@@ -16,7 +17,8 @@ if($password1 != $password2){
             $statement->execute(array(':email' => $email));
 
             if($statement->rowCount() == 1){
-                $hashpass = password_hash($password1, PASSWORD_BCRYPT);
+                // $hashpass = $password1;    Testing without hash
+                $hashpass = hash('md5', $password1, False);
 
                 $sqlUpdate = "UPDATE users SET Passwrd =:Passwrd WHERE email=:email ";
 
@@ -24,7 +26,9 @@ if($password1 != $password2){
 
                 $statement->execute(array(':Passwrd' => $hashpass, ':email' =>$email));
 
-                $result = "<p>Rest successful</p>";
+                $result = "<p>Reset successful</p>";
+                echo $result;
+                header("location: includes/logout.php");
             }
             else{
                 $result = $result = "<p>Rest UNSUCCESSFUL</p>";

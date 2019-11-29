@@ -23,11 +23,26 @@ include_once 'config/database.php';
                     $stmt->execute();
 
                     $res = $stmt->fetch();
-    //       print_r ($res);
           echo "<div id='img_div'>";
-          echo "<img src='img_gallery/".$res['image']."'>";
+          echo "<img src='img_gallery/".$res['image']."'>
+          <form action = 'comment.php' method = 'post'>
+          <textarea 
+            id='text' 
+            cols='40' 
+            rows='2'
+            name='image_text' 
+        placeholder='Add a comment...'></textarea>
+            <div style='  width : 200;
+                        height : 120;
+                        z-index : 10;
+                        display : inline-block;
+                        border-right : 1px solid darkgrey;'></div>
+      <br/>     
+                <input type = 'hidden' name = 'img_id' value = '".$res['photo_id']."'/>
+                <input type = 'submit' name = 'comment' value = 'comment'/>
+            </form>";
           echo "</div>";
-    //   }
+        
     }catch(PDOException $e)
     {
         echo $stmt . "<br>" . $e->getMessage();

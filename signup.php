@@ -43,7 +43,7 @@ if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password
                 if($stmt->rowCount()){
                     mail($email, "Confirm email",
                     "http://localhost:8080/camagru/functions/verify.php?email=$email&vericode=$vericode", "Please click on link to verify your account then close window and login");
-                    header("location: camera.php");
+                    header("location: feed.php");
                 }
 }
     }

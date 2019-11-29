@@ -1,17 +1,11 @@
-Database wrappers allow software applications that acces database management systems
-to do so indirectly instead of encoding specific database access functions within
-the applications'control functionalilty. 
+reset password WITH VERIFICATION EMAIL and edit profile
 
+CHECK THERE IS A WAY TO LOGOUT ON ALL PAGES
 
-Verification email(Done)
+ADD A PUBLIC GALLERY To the login page. (DONE BOIII) 
 
-reset password(done) and edit profile
+AND A PRIVATE ONE - Do last
 
-Upload photos into database (save into img)
+like and comments on gallery
 
-like and comment and delete system
-
-Logout added to header for everypage
-
-
-imagepage - take image id, select from data and print add like and comment section then display comments from comment php
+Change username, password and mail (DONE MY BOIIIIII)

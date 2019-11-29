@@ -38,6 +38,7 @@
         
         </div>
         <h1>Click here to see your <a href='gallery.php'>gallery</a></h1>
+
         <?php 
         //print_r($_SESSION['user_id']);
         include_once 'config/setup.php';
@@ -48,13 +49,15 @@
           $con = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
               $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
               $sql = "USE ".$DB_NAME;
-                      $sql = "SELECT * FROM pictures_table";
+                      $userid = $_SESSION['user_id'];
+                      $sql = "SELECT * FROM pictures_table WHERE `user_id` = $userid";
                       $stmt = $con->prepare($sql);
+                      //$stmt->bindParam(':userid', $userid);
                       $stmt->execute();
-                      $res = $stmt->fetch();
         $html = "<ul id = 'taken-pics'>";
-        foreach($images as $img) 	
+        while($res = $stmt->fetch()) 	
         { 
+          $img = $res['image'];
           if($img=== '.' || $img === '..') 
           {
             continue;
@@ -99,7 +102,9 @@
       }
       ?>
         <script src="js/photo.js"></script>
-    
+
+    <h1>View profile <a href='profile.php'>here</a></h1>
+    <br/><br/>
         <div class="footer">
         <?php include 'includes/footer.php' ?>
         </div>
