@@ -35,35 +35,8 @@ NOTE: This is for setting the project to run on Arch Linux Manjaro using Xampp. 
 #### Data Management System (DBMS):
 - MariaDB: An open source SQL server used as the primary database driver along with the Structured Query Language we used for the project database queries.
 
-#### Project structure:
-```
-camagru
-├── app
-│   ├── controllers -> Contains all page-specific back-end functionality
-│   │   └── *.php
-│   ├── lib -> Contains addition helper functionality
-│   │   └── helpers
-│   │       └── *.php
-│   └── views -> Contains templates and all page-specific layouts
-│       ├── *.php
-│       ├── layouts
-│       │   └── *.php
-│       └── *.php
-├── config -> Contains all initial application and database functionality
-│   └── *.php
-├── core -> Contains all primary back-end application functionality
-│   └── *.php
-├── css -> Contains all stylesheets
-│   └── *.css
-├── img -> Contains all image files
-│   └── *.png
-│   └── *.jpg
-├── index.php -> Main entry point to the application
-└── js -> Contains all page-specific client-side functionality and AJAX
-   └── *.js
-```
 
-## Testing
+## WTC_ suggested project testing check list
 [Marking sheet linked here](https://github.com/tcajee/camagru/blob/master/camagru.pdf)
 - The following are test will be run:
     - Preliminary checks:
